@@ -57,5 +57,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        // 根据之前设置的路由规则名（post）对应添加post类名，并指向路由验证路径
+        'post' => \App\Http\Middleware\VerifyPost::class,
     ];
 }

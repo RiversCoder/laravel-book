@@ -39,7 +39,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        // 新增自定义路由文件
+        $this->mapPostRoutes();
     }
 
     /**
@@ -69,5 +70,17 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * ['post' route  /post/ ]
+     * @return [type] [description]
+     */
+    protected function mapPostRoutes()
+    {
+        Route::prefix('post')
+             ->middleware('post')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/post/route.php'));
     }
 }
