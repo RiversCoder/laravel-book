@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use \App\Post;
 
 class PostController extends BaseController
 {   
     // 列表
     public function posts(){
-        return view('post/index');
+        $posts = Post::orderBy('created_at','desc')->paginate(5);;
+        return view('post/index',compact('posts'));
     }
 
     // 详情
-    public function show(){
-        return view('post/show');
+    public function show($id = 1){
+        $post = Post::find($id);
+        return view('post/show',compact('post'));
     }
 
     // 新增 1
