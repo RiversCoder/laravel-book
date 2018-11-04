@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 use \App\Post;
 
 class PostController extends BaseController
@@ -19,13 +20,16 @@ class PostController extends BaseController
         return view('post/show',compact('post'));
     }
 
-    // 新增 1
+    // 新增 page
     public function create(){
         return view('post/create');
     }
 
-    // 新增 2
+    // 新增 post
     public function store(){
+
+        dd(request());
+
         return 'PUT 新增文章';
     }
 
